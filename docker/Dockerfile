@@ -23,7 +23,7 @@ RUN rm -r /root/.cache
 # -----------------------------------------------------------------------------------------
 
 RUN apk add --no-cache git
-RUN git clone https://github.com/vincentcox/StaCoAn/
+RUN git clone https://github.com/CarlNeuhaus/StaCoAn/
 WORKDIR /StaCoAn/src
 RUN pip3 install -r requirements.txt && chmod u+rwx /StaCoAn/src/jadx/bin/jadx
 
