@@ -38,6 +38,3 @@ AKIA[0-9A-Z]{16}'#[a|A][w|W][s|S].*AKIA[0-9A-Z]{16}'|||90|||AWS API Key
 xox[p|b|o|a].*'|||90|||Slack Token
 [t|T][w|W][i|I][t|T][t|T][e|E][r|R].*.[0-9a-zA-Z]{35,44}'|||90|||Twitter Oauth 2
 [t|T][w|W][i|I][t|T][t|T][e|E][r|R].*[\'|"][0-9a-zA-Z]{35,44}[\'|"]'|||90|||Twitter Oauth
-mygov|||90|||test mygov found
-medicare|||90|||test medicare found
-mobile|||90|||test mobile found
