@@ -9,3 +9,35 @@ https?:\/\/.*(uat|test|api).*|||60||| This regex matches any URL containing 'api
 ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$|||70|||A base64 string was found. Go to https://www.base64decode.org/ and paste your value. This decrypted value is in most cases very interesting.
 Authorization: Basic|||95|||Basic authentication was found. Apart from the fact that API communication should be with OAUTH or something similar, it contains hardcoded credentials.
 (SELECT\s[\w\*\)\(\,\s]+\sFROM\s[\w]+)| (UPDATE\s[\w]+\sSET\s[\w\,\'\=]+)| (INSERT\sINTO\s[\d\w]+[\s\w\d\)\(\,]*\sVALUES\s\([\d\w\'\,\)]+)| (DELETE\sFROM\s[\d\w\'\=]+)|||40|||Interesting SQL transaction! In most cases a useless finding, but it might lead to something bigger. Might.
+AKIA[0-9A-Z]{16}'|||90|||AWS API Key
+AKIA[0-9A-Z]{16}'#[a|A][w|W][s|S].*AKIA[0-9A-Z]{16}'|||90|||AWS API Key
+[f|F][a|A][c|C][e|E][b|B][o|O][o|O][k|K].*.[0-9a-f]{32}'|||90|||Facebook Oauth 2
+[f|F][a|A][c|C][e|E][b|B][o|O][o|O][k|K].*[\'|"][0-9a-f]{32}[\'|"]'|||90|||Facebook Oauth
+[a|A][p|P][p|P][s|S][e|E][c|C][r|R][e|E][t|T].*[\'|"][0-9a-zA-Z]{32,45}[\'|"]'|||90|||Generic AppSecret 2
+[a|A][p|P][p|P][s|S][e|E][c|C][r|R][e|E][t|T].*.[0-9a-zA-Z]{32,45}'|||90|||Generic AppSecret
+[s|S][e|E][c|C][r|R][e|E][t|T].*[\'|"][0-9a-zA-Z]{32,45}[\'|"]'|||90|||Generic Secret
+[g|G][i|I][t|T][h|H][u|U][b|B].*[c|C][l|L][i|I][e|E][n|N][T|T][s|S][e|E][c|C][r|R][e|E][t|T].*[0-9a-zA-Z]{35,40}'|||90|||Github 2
+[g|G][i|I][t|T][h|H][u|U][b|B].*[0-9a-zA-Z]{35,40}'|||90|||Github 
+[g|G][i|I][t|T][h|H][u|U][b|B].*[[\'|"]0-9a-zA-Z]{35,40}[\'|"]'|||90|||Github
+[c|C][l|L][i|I][e|E][n|N][T|T][_][s|S][e|E][c|C][r|R][e|E][t|T].*[:].*[a-zA-Z0-9-_]{24}'|||90|||Google Oauth 2
+("client_secret":"[a-zA-Z0-9-_]{24}")'|||90|||Google Oauth
+[h|H][e|E][r|R][o|O][k|K][u|U].*[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}'|||90|||Heroku API Key
+([a-z0-9]+[.]*supersecretinternal[.]com)'|||90|||Internal Subdomain
+-----BEGIN PGP PRIVATE KEY BLOCK-----'|||90|||PGP private key block
+-----BEGIN PGP PRIVATE KEY BLOCK-----.*'|||90|||PGP private key block
+-----BEGIN PRIVATE KEY-----.*'|||90|||Private key
+-----BEGIN RSA PRIVATE KEY-----'|||90|||RSA private key
+-----BEGIN RSA PRIVATE KEY-----.*'|||90|||RSA private key
+-----BEGIN DSA PRIVATE KEY-----'|||90|||SSH (DSA) private key
+-----BEGIN DSA PRIVATE KEY-----.*'|||90|||SSH (DSA) private key
+-----BEGIN EC PRIVATE KEY-----'|||90|||SSH (EC) private key
+-----BEGIN EC PRIVATE KEY-----.*'|||90|||SSH (EC) private key
+-----BEGIN OPENSSH PRIVATE KEY-----'|||90|||SSH (OPENSSH) private key
+-----BEGIN OPENSSH PRIVATE KEY-----.*'|||90|||SSH (OPENSSH) private key
+(xox[p|b|o|a]-[0-9]{12}-[0-9]{12}-[0-9]{12}-[a-z0-9]{32})'|||90|||Slack Token
+xox[p|b|o|a].*'|||90|||Slack Token
+[t|T][w|W][i|I][t|T][t|T][e|E][r|R].*.[0-9a-zA-Z]{35,44}'|||90|||Twitter Oauth 2
+[t|T][w|W][i|I][t|T][t|T][e|E][r|R].*[\'|"][0-9a-zA-Z]{35,44}[\'|"]'|||90|||Twitter Oauth
+mygov|||90|||test mygov found
+medicare|||90|||test medicare found
+mobile|||90|||test mobile found
